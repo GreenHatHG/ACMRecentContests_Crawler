@@ -1,8 +1,8 @@
 package team.huoguo.crawler.common;
 
 import com.mongodb.MongoClientSettings;
-import com.mongodb.client.MongoClients;
 import com.mongodb.client.MongoClient;
+import com.mongodb.client.MongoClients;
 import com.mongodb.client.MongoDatabase;
 import org.bson.codecs.configuration.CodecRegistry;
 import org.bson.codecs.pojo.PojoCodecProvider;
@@ -15,6 +15,8 @@ import static org.bson.codecs.configuration.CodecRegistries.fromRegistries;
  **/
 public class MongoDBJDBC {
 
+    private final static String USER = "acm";
+    private final static String PWD = "443niubi";
     private static MongoClient mongoClient;
     public static MongoDatabase mongoDatabase = null;
 
@@ -24,8 +26,9 @@ public class MongoDBJDBC {
      */
     public static void connect(String database){
 
-        //连接本地数据库
-        mongoClient = MongoClients.create();
+        //连接数据库
+        mongoClient = MongoClients.create("mongodb://acm:443niubi@127.0.0.1:27017/?authSource=admin&ssl=false");
+
         //为POJO创建Codec Registry
         CodecRegistry pojoCodecRegistry = fromRegistries(MongoClientSettings.getDefaultCodecRegistry(),
                 fromProviders(PojoCodecProvider.builder().automatic(true).build()));

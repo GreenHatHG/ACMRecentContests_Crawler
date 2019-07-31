@@ -19,7 +19,7 @@ public class ContestDaoImpl implements ContestDao {
     private MongoCollection<Contest> mongoCollection = null;
 
     public void setMongoCollection(){
-        mongoCollection = MongoDBJDBC.mongoDatabase.getCollection("contest", Contest.class);
+        mongoCollection = MongoDBJDBC.mongoDatabase.getCollection("contests", Contest.class);
     }
 
     /**

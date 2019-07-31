@@ -15,13 +15,6 @@ public class Main {
 
     public static void main(String[] args) {
         Crawl.crawl();
-        System.out.println("----------获取到的数据------------------------");
-        System.out.println("----------获取到的数据------------------------");
-        for(Contest contest : Crawl.items){
-            System.out.println(contest);
-        }
-        System.out.println("----------获取到的数据------------------------");
-        System.out.println("----------获取到的数据------------------------");
         MongoDBJDBC.connect("acm");
         Crawl.saveToMongoDB();
         MongoDBJDBC.close();
