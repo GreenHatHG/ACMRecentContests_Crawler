@@ -5,7 +5,6 @@ import cn.hutool.core.date.DatePattern;
 import cn.hutool.core.date.DateTime;
 import cn.hutool.core.date.DateUtil;
 
-import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
 
@@ -17,17 +16,20 @@ import java.util.Locale;
 public class DateUtils {
 
     /**
-     * 将字符串类型的时间规范到yyyy-MM-dd HH:mm:ss格式
+     * 将字符串类型的时间规范到yyyy-MM-dd HH:mm格式
      * @param dateStr 字符串
      * @param role 当前字符串的时间格式
      * @return String  规范后格式的时间
      **/
 
-    public static String dataFormat(String dateStr, String role) throws Exception{
-        Locale locale = Locale.US;
+    public static String dateFormat(String dateStr, String role) throws Exception{
+/*        Locale locale = Locale.US;
         SimpleDateFormat frm = new SimpleDateFormat(role, locale);
         Date date = frm.parse(dateStr);
-        return DateUtil.formatDateTime(date);
+        return DateUtil.formatDateTime(date);*/
+        //第三个参数是为了防止输入的英文识别成中文
+        Date date = DateUtil.parse(dateStr, role, Locale.US);
+        return DateUtil.format(date, "yyyy-MM-dd HH:mm");
     }
 
     /**
@@ -63,7 +65,7 @@ public class DateUtils {
      * @return String
      */
     public static String getWeek(String dateString){
-        DateTime dateTime = new DateTime(dateString, DatePattern.NORM_DATETIME_FORMAT);
+        DateTime dateTime = new DateTime(dateString, DatePattern.NORM_DATETIME_MINUTE_FORMAT);
         return dateTime.dayOfWeekEnum().toChinese();
     }
 
@@ -73,9 +75,10 @@ public class DateUtils {
      * @param minute
      * @return
      */
-    public static String offset(String time, int minute){
+    public static String offset (String time, int minute) throws Exception {
         Date date = DateUtil.parse(time);
-        return DateUtil.offsetMinute(date, minute).toString();
+        String offsetTime = DateUtil.offsetMinute(date, minute).toString();
+        return DateUtils.dateFormat(offsetTime, "yyyy-MM-dd HH:mm");
     }
 
 }

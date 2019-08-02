@@ -4,9 +4,8 @@ import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import com.geccocrawler.gecco.annotation.PipelineName;
 import com.geccocrawler.gecco.pipeline.JsonPipeline;
-import team.huoguo.crawler.common.Crawl;
+import team.huoguo.crawler.common.CrawlConfig;
 import team.huoguo.crawler.common.DateUtils;
-import team.huoguo.crawler.entity.CodeChef;
 import team.huoguo.crawler.entity.CodeForces;
 import team.huoguo.crawler.entity.Contest;
 
@@ -33,7 +32,7 @@ public class CodeForcesService extends JsonPipeline {
             contest.setOj("CodeForces");
             contest.setName(codeForces.getName());
             startTime = codeForces.getStartTime();
-            startTime = DateUtils.dataFormat(startTime, role);
+            startTime = DateUtils.dateFormat(startTime, role);
             contest.setStartTime(startTime);
 
             String length = codeForces.getLength();
@@ -52,7 +51,7 @@ public class CodeForcesService extends JsonPipeline {
                 contest.setLink(codeForces.getLink());
             }
 
-            Crawl.items.add(contest);
+            CrawlConfig.items.add(contest);
         }
     }
     private List<CodeForces> list = null;

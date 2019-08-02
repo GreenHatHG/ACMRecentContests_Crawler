@@ -1,7 +1,6 @@
 package team.huoguo.crawler;
 
-import team.huoguo.crawler.common.Crawl;
-import team.huoguo.crawler.common.MongoDBJDBC;
+import team.huoguo.crawler.common.CrawlConfig;
 import team.huoguo.crawler.entity.Contest;
 
 
@@ -14,10 +13,13 @@ import team.huoguo.crawler.entity.Contest;
 public class Main {
 
     public static void main(String[] args) {
-        Crawl.crawl();
-        MongoDBJDBC.connect("acm");
-        Crawl.saveToMongoDB();
-        MongoDBJDBC.close();
+        CrawlConfig.crawl();
+        for(Contest contest: CrawlConfig.items){
+            System.out.println(contest);
+        }
+/*        MongoDBJDBC.connect("acm");
+        CrawlConfig.saveToMongoDB();
+        MongoDBJDBC.close();*/
     }
 
 }

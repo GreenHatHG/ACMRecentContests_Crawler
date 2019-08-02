@@ -4,7 +4,7 @@ import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import com.geccocrawler.gecco.annotation.PipelineName;
 import com.geccocrawler.gecco.pipeline.JsonPipeline;
-import team.huoguo.crawler.common.Crawl;
+import team.huoguo.crawler.common.CrawlConfig;
 import team.huoguo.crawler.common.DateUtils;
 import team.huoguo.crawler.entity.Contest;
 import team.huoguo.crawler.entity.NowCoder;
@@ -23,7 +23,6 @@ public class NowCoderService extends JsonPipeline {
 
     private List<NowCoder> nowCoders = null;
 
-
     private void addItem() throws Exception{
         Contest contest = null;
         for(NowCoder nowCoder : nowCoders){
@@ -38,13 +37,13 @@ public class NowCoderService extends JsonPipeline {
              * 需要进行提取并且规范
              */
             String s = nowCoder.getStartTime();
-            String startTime = s.substring(5,21) + ":00";
-            String endTime = s.substring(24,40) + ":00";
+            String startTime = s.substring(5,21);
+            String endTime = s.substring(24,40);
             contest.setLength(DateUtils.getLength(startTime,endTime));
             contest.setStartTime(startTime);
             contest.setEndTime(endTime);
             contest.setWeek(DateUtils.getWeek(startTime));
-            Crawl.items.add(contest);
+            CrawlConfig.items.add(contest);
         }
     }
 

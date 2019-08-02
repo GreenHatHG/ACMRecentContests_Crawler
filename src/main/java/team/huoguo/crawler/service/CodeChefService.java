@@ -6,7 +6,7 @@ import com.geccocrawler.gecco.annotation.PipelineName;
 import com.geccocrawler.gecco.pipeline.JsonPipeline;
 import team.huoguo.crawler.entity.Contest;
 import team.huoguo.crawler.entity.CodeChef;
-import team.huoguo.crawler.common.Crawl;
+import team.huoguo.crawler.common.CrawlConfig;
 import team.huoguo.crawler.common.DateUtils;
 
 import java.util.ArrayList;
@@ -33,8 +33,8 @@ public class CodeChefService extends JsonPipeline {
             startTime = codeChef.getStartTime() + " " + codeChef.getStartTimeHms();
             endTime = codeChef.getEndTime() + " " + codeChef.getEndTimeHms();
             //转换为规范的时间格式
-            startTime = DateUtils.dataFormat(startTime, role);
-            endTime = DateUtils.dataFormat(endTime, role);
+            startTime = DateUtils.dateFormat(startTime, role);
+            endTime = DateUtils.dateFormat(endTime, role);
             contest.setStartTime(startTime);
             contest.setEndTime(endTime);
             contest.setLength(DateUtils.getLength(startTime, endTime));
@@ -42,7 +42,7 @@ public class CodeChefService extends JsonPipeline {
             contest.setLink(codeChef.getLink());
             contest.setWeek(DateUtils.getWeek(startTime));
             contest.setName(codeChef.getName());
-            Crawl.items.add(contest);
+            CrawlConfig.items.add(contest);
         }
     }
 
