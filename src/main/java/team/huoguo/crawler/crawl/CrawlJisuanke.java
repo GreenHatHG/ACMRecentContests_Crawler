@@ -2,6 +2,12 @@ package team.huoguo.crawler.crawl;
 
 import com.geccocrawler.gecco.dynamic.DynamicGecco;
 
+/**
+ * @description 爬取计蒜客
+ * @author: GreenHatHG
+ * @create: 2019-08-02 10:52
+ **/
+
 public class CrawlJisuanke extends Crawl{
 
     @Override

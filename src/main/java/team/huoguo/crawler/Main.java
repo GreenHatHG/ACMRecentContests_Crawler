@@ -3,7 +3,6 @@ package team.huoguo.crawler;
 import team.huoguo.crawler.common.CrawlConfig;
 import team.huoguo.crawler.entity.Contest;
 
-
 /**
  * @description: 启动类
  * @author: GreenHatHG

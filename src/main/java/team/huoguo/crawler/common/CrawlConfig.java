@@ -2,10 +2,7 @@ package team.huoguo.crawler.common;
 
 import com.geccocrawler.gecco.GeccoEngine;
 import com.geccocrawler.gecco.request.HttpGetRequest;
-import team.huoguo.crawler.crawl.CrawlCodeChef;
-import team.huoguo.crawler.crawl.CrawlCodeForces;
-import team.huoguo.crawler.crawl.CrawlJisuanke;
-import team.huoguo.crawler.crawl.CrawlNowcoder;
+import team.huoguo.crawler.crawl.*;
 import team.huoguo.crawler.dao.ContestDao;
 import team.huoguo.crawler.dao.impl.ContestDaoImpl;
 import team.huoguo.crawler.entity.Contest;
@@ -31,18 +28,23 @@ public class CrawlConfig {
      * 配置爬虫
      */
     public static void crawl(){
+/*
 
         new CrawlCodeChef().crawl();
         new CrawlCodeForces().crawl();
         new CrawlJisuanke().crawl();
         new CrawlNowcoder().crawl();
-
+*/
+        new CrawlAtcoder().crawl();
         List urls = new ArrayList();
+/*
         urls.add(new HttpGetRequest("https://www.codechef.com/contests"));
         urls.add(new HttpGetRequest("https://ac.nowcoder.com/acm/contest/vip-index"));
         urls.add(new HttpGetRequest("http://codeforces.com/contests"));
         urls.add(new HttpGetRequest("https://nanti.jisuanke.com/contest"));
-
+        urls.add(new HttpGetRequest("https://atcoder.jp/contests/"));
+*/
+        urls.add(new HttpGetRequest("https://atcoder.jp/contests/"));
         GeccoEngine.create()
                 .classpath("team.huoguo.crawler.service")
                 .start(urls)
