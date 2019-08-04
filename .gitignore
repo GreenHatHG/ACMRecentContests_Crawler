@@ -39,7 +39,3 @@ hs_err_pid*
 # idea
 .idea
 target/
-.gitignore
-src/main/java/team/huoguo/crawler/crawl/CrawlAtcoder.java
-src/main/java/team/huoguo/crawler/entity/Atcoder.java
-src/main/java/team/huoguo/crawler/service/AtcoderService.java
