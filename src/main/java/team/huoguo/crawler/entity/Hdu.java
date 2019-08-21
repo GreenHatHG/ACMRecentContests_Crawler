@@ -10,11 +10,10 @@ import lombok.Data;
 @Data
 public class Hdu {
     private String oj;
+    private String link;
     private String name;
     private String type;
     private String startTime;
-    private String endTime;
-    private String week;
     private String status;
-    private String countdown;
+
 }

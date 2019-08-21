@@ -29,25 +29,26 @@ public class CrawlConfig {
      */
     public static void crawl(){
 
-//        new CrawlCodeChef().crawl();
-//        new CrawlCodeForces().crawl();
-//        new CrawlJisuanke().crawl();
-//        new CrawlNowcoder().crawl();
-//        new CrawlAtcoder().crawl();
-//        new CrawlLuoGu().crawl();
-          new CrawlHdu().crawl();
-//
+        new CrawlCodeChef().crawl();
+        new CrawlCodeForces().crawl();
+        new CrawlJisuanke().crawl();
+        new CrawlNowcoder().crawl();
+        new CrawlAtcoder().crawl();
+        new CrawlLuoGu().crawl();
+        new CrawlHdu().crawl();
+
         List urls = new ArrayList();
-//        urls.add(new HttpGetRequest("https://www.codechef.com/contests"));
-//        urls.add(new HttpGetRequest("https://ac.nowcoder.com/acm/contest/vip-index"));
-//        urls.add(new HttpGetRequest("http://codeforces.com/contests"));
-//        urls.add(new HttpGetRequest("https://nanti.jisuanke.com/contest"));
-//        urls.add(new HttpGetRequest("https://atcoder.jp/contests/"));
-//        urls.add(new HttpGetRequest("https://www.luogu.org/contest/list"));
-          urls.add(new HttpGetRequest("http://acm.hdu.edu.cn/recentcontest/"));
+        urls.add(new HttpGetRequest("https://www.codechef.com/contests"));
+        urls.add(new HttpGetRequest("https://ac.nowcoder.com/acm/contest/vip-index"));
+        urls.add(new HttpGetRequest("http://codeforces.com/contests"));
+        urls.add(new HttpGetRequest("https://nanti.jisuanke.com/contest"));
+        urls.add(new HttpGetRequest("https://atcoder.jp/contests/"));
+        urls.add(new HttpGetRequest("https://www.luogu.org/contest/list"));
+        urls.add(new HttpGetRequest("http://acm.hdu.edu.cn/recentcontest/"));
         GeccoEngine.create()
                 .classpath("team.huoguo.crawler.service")
                 .start(urls)
+//                .debug(true)
                 .mobile(false)
                 .run();
     }
