@@ -36,6 +36,7 @@ public class CrawlConfig {
         new CrawlAtcoder().crawl();
         new CrawlLuoGu().crawl();
         new CrawlHdu().crawl();
+        new CrawlBestcoder().crawl();
 
         List urls = new ArrayList();
         urls.add(new HttpGetRequest("https://www.codechef.com/contests"));
@@ -45,10 +46,13 @@ public class CrawlConfig {
         urls.add(new HttpGetRequest("https://atcoder.jp/contests/"));
         urls.add(new HttpGetRequest("https://www.luogu.org/contest/list"));
         urls.add(new HttpGetRequest("http://acm.hdu.edu.cn/recentcontest/"));
+        HttpGetRequest bestCoder = new HttpGetRequest("http://bestcoder.hdu.edu.cn/contests/contest_list.php");
+        bestCoder.setCharset("gb2312");
+        urls.add(bestCoder);
         GeccoEngine.create()
                 .classpath("team.huoguo.crawler.service")
                 .start(urls)
-//                .debug(true)
+               // .debug(true)
                 .mobile(false)
                 .run();
     }

@@ -56,7 +56,7 @@ public class HduService extends JsonPipeline {
                 contest.setLength(length);
                 contest.setWeek(week);
                 contest.setLink(item.getLink());
-                System.out.println(contest);
+                //System.out.println(contest);
                 CrawlConfig.items.add(contest);
             }
         }

@@ -19,6 +19,7 @@ public class Main {
        for(Contest item : CrawlConfig.items){
             System.out.println(item);
         }
+
 //        MongoDBJDBC.connect("acm");
 //        CrawlConfig.saveToMongoDB();
 //        MongoDBJDBC.close();

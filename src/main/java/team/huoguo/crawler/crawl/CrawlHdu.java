@@ -9,7 +9,7 @@ import com.geccocrawler.gecco.dynamic.DynamicGecco;
 public class CrawlHdu extends Crawl{
     @Override
     public void crawl() {
-        role = "body > table > tbody > tr:nth-child(4) > td:nth-child(1) > table > tbody > tr:nth-child(n+2)";
+        role = "body > table > tbody > tr:nth-child(4) > td:nth-child(1) > table > tbody > tr:nth-child(n)";
         DynamicGecco.html()
                 .gecco("http://acm.hdu.edu.cn/recentcontest/", "HduService")
                 .listField("list",
