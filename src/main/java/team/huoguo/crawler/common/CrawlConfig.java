@@ -7,6 +7,7 @@ import team.huoguo.crawler.dao.ContestDao;
 import team.huoguo.crawler.dao.impl.ContestDaoImpl;
 import team.huoguo.crawler.entity.Contest;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -27,15 +28,16 @@ public class CrawlConfig {
     /**
      * 配置爬虫
      */
-    public static void crawl(){
+
+    public static void crawl() throws IOException {
 
         new CrawlCodeChef().crawl();
         new CrawlCodeForces().crawl();
         new CrawlJisuanke().crawl();
         new CrawlNowcoder().crawl();
         new CrawlAtcoder().crawl();
-        new CrawlLuoGu().crawl();
         new CrawlHdu().crawl();
+        new CrawlLuoGu().crawl();
         new CrawlBestcoder().crawl();
 
         List urls = new ArrayList();
@@ -44,15 +46,19 @@ public class CrawlConfig {
         urls.add(new HttpGetRequest("http://codeforces.com/contests"));
         urls.add(new HttpGetRequest("https://nanti.jisuanke.com/contest"));
         urls.add(new HttpGetRequest("https://atcoder.jp/contests/"));
-        urls.add(new HttpGetRequest("https://www.luogu.org/contest/list"));
         urls.add(new HttpGetRequest("http://acm.hdu.edu.cn/recentcontest/"));
+        urls.add(new HttpGetRequest("https://www.luogu.org/contest/list"));
         HttpGetRequest bestCoder = new HttpGetRequest("http://bestcoder.hdu.edu.cn/contests/contest_list.php");
         bestCoder.setCharset("gb2312");
+        bestCoder.addHeader("user-agent","Mozilla/5.0");
         urls.add(bestCoder);
+        HttpGetRequest luogu= new HttpGetRequest("https://www.luogu.org/contest/list");
+        luogu.addHeader("user-agent","Mozilla/5.0");  //加ua
+//        urls.add(luogu);
         GeccoEngine.create()
                 .classpath("team.huoguo.crawler.service")
                 .start(urls)
-               // .debug(true)
+  //              .debug(true)
                 .mobile(false)
                 .run();
     }

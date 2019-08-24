@@ -10,6 +10,7 @@ import lombok.Data;
 public class LuoGu {
     private String name;
     private String link;
+    private String type;
     private String startTime;
     private String endTime;
     private String status;

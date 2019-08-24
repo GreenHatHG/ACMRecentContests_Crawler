@@ -1,5 +1,7 @@
 package team.huoguo.crawler.crawl;
 
+import java.io.IOException;
+
 /**
  * @description: 爬虫父类
  * @author: GreenHatHG
@@ -12,6 +14,6 @@ public abstract class Crawl {
     public static String role = null;
 
     //爬取代码
-    public abstract void crawl();
+    public abstract void crawl() throws IOException;
 
 }
