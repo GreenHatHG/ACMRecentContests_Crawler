@@ -28,7 +28,7 @@ import java.util.regex.Pattern;
  * @date 2019/8/4 下午3:34
  */
 public class CrawlLuoGu extends Crawl{
-        String ss1;
+    String ss1;
     public static String unicodeToString(String str) {
 
         Pattern pattern = Pattern.compile("(\\\\u(\\p{XDigit}{4}))");
@@ -94,6 +94,15 @@ public class CrawlLuoGu extends Crawl{
             contest.setLink(link);
             CrawlConfig.items.add(contest);
 
+            try{
+               Document docs = Jsoup.connect(url)
+                        .header("User-Agent", "Mozilla/5.0 (Windows NT 6.1; Win64; x64; rv:49.0) Gecko/20100101 Firefox/49.0")
+                        .header("Connection", "close")//如果是这种方式，这里务必带上
+                        .timeout(8000)//超时时间
+                        .get();
+            } catch (Exception e) {//可以精确处理timeoutException
+                //超时处理
+            }
             // System.out.println(contest);
         }
     }
