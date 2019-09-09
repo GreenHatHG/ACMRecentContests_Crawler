@@ -34,6 +34,9 @@ public class BestcoderService extends JsonPipeline {
     private void addItem() throws Exception {
         Contest contest = null;
         for (Bestcoder item : list) {
+            if("Ended".equals(item.getStatus())){
+                continue;
+            }
             contest = new Contest();
             String endTime = getEndTime(item.getLink());
             String role = "yyyy-MM-dd HH:mm:ss";

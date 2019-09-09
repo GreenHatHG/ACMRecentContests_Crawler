@@ -1,6 +1,7 @@
 package team.huoguo.crawler;
 
 import team.huoguo.crawler.common.CrawlConfig;
+import team.huoguo.crawler.common.MongoDBJDBC;
 import team.huoguo.crawler.entity.Contest;
 
 import java.io.IOException;
@@ -19,9 +20,9 @@ public class Main {
         for(Contest item : CrawlConfig.items){
             System.out.println(item);
         }
-        MongoDBJDBC.connect("acm");
-        CrawlConfig.saveToMongoDB();
-        MongoDBJDBC.close();
+//        MongoDBJDBC.connect("acm");
+//        CrawlConfig.saveToMongoDB();
+//        MongoDBJDBC.close();
     }
 
 }
