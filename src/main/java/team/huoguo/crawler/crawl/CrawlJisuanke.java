@@ -13,11 +13,16 @@ public class CrawlJisuanke extends Crawl{
     @Override
     public void crawl() {
         role = ".jsk-panel-bd.jsk-padding-top-sm > table > tbody > tr:nth-child(n)";
+        //role="#app > div.jsk-panel.jsk-margin-top-0 > div.jsk-panel-bd.jsk-padding-top-sm"
+        //name = "#app > div.jsk-panel.jsk-margin-top-0 > div.jsk-panel-bd.jsk-padding-top-sm > table > tbody > tr:nth-child(1) > td:nth-child(2) > a"
+        //startTime = "#app > div.jsk-panel.jsk-margin-top-0 > div.jsk-panel-bd.jsk-padding-top-sm > table > tbody > tr:nth-child(1) > td:nth-child(4)"
+        //length =" #app > div.jsk-panel.jsk-margin-top-0 > div.jsk-panel-bd.jsk-padding-top-sm > table > tbody > tr:nth-child(1) > td.jsk-hide-md-down"
+        //status = "#app > div.jsk-panel.jsk-margin-top-0 > div.jsk-panel-bd.jsk-padding-top-sm > table > tbody > tr:nth-child(1) > td:nth-child(7)"
         DynamicGecco.html()
                 .gecco("https://nanti.jisuanke.com/contest", "JisuankeService")
                 .listField("list",
                         DynamicGecco.html()
-                                .stringField("name").csspath("td:nth-child(2) > a[title]").attr("title").build()
+                                .stringField("name").csspath("td:nth-child(2) > a[title]").text().build()
                                 .stringField("startTime").csspath(" td:nth-child(4)").text().build()
                                 .stringField("length").csspath("td.jsk-hide-md-down").text().build()
                                 .stringField("link").csspath("td:nth-child(2) > a").href().build()

@@ -5,6 +5,7 @@ import cn.hutool.core.date.DatePattern;
 import cn.hutool.core.date.DateTime;
 import cn.hutool.core.date.DateUtil;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
 
@@ -79,6 +80,15 @@ public class DateUtils {
         Date date = DateUtil.parse(time);
         String offsetTime = DateUtil.offsetMinute(date, minute).toString();
         return DateUtils.dateFormat(offsetTime, "yyyy-MM-dd HH:mm");
+    }
+
+    public static String timestampTotime(String timestamp) {
+        if(timestamp == null || timestamp.equals(" "))
+            return null;
+        SimpleDateFormat format =  new SimpleDateFormat( "yyyy-MM-dd HH:mm" );
+        Long time=Long.valueOf(timestamp) * 1000;  //10位时间戳转为Date
+        String d = format.format(time);
+        return d;
     }
 
 }

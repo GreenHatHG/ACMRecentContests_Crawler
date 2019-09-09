@@ -1,9 +1,9 @@
 package team.huoguo.crawler;
 
 import team.huoguo.crawler.common.CrawlConfig;
-import team.huoguo.crawler.common.MongoDBJDBC;
-import team.huoguo.crawler.crawl.Crawl;
 import team.huoguo.crawler.entity.Contest;
+
+import java.io.IOException;
 
 /**
  * @description: 启动类
@@ -13,7 +13,8 @@ import team.huoguo.crawler.entity.Contest;
 
 public class Main {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
+
         CrawlConfig.crawl();
         for(Contest item : CrawlConfig.items){
             System.out.println(item);
