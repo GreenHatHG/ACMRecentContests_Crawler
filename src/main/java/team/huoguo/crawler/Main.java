@@ -16,17 +16,12 @@ public class Main {
     public static void main(String[] args) throws IOException {
 
         CrawlConfig.crawl();
-       for(Contest item : CrawlConfig.items){
+        for(Contest item : CrawlConfig.items){
             System.out.println(item);
         }
-
-//        MongoDBJDBC.connect("acm");
-//        CrawlConfig.saveToMongoDB();
-//        MongoDBJDBC.close();
-
-
-
-
+        MongoDBJDBC.connect("acm");
+        CrawlConfig.saveToMongoDB();
+        MongoDBJDBC.close();
     }
 
 }
