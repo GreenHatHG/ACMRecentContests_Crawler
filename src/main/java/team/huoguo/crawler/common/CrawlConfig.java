@@ -21,7 +21,7 @@ public class CrawlConfig {
     /**
      * 爬虫得到的所有条目
      */
-    public static List <Contest> items = new ArrayList<Contest>();
+    public static List<Contest> items = new ArrayList<Contest>();
 
     private static ContestDao contestDao = new ContestDaoImpl();
 
@@ -29,7 +29,7 @@ public class CrawlConfig {
      * 配置爬虫
      */
 
-    public static void crawl() throws IOException {
+    public static void crawl() throws Exception {
 
         new CrawlCodeChef().crawl();
         new CrawlCodeForces().crawl();
@@ -43,22 +43,20 @@ public class CrawlConfig {
         List urls = new ArrayList();
         urls.add(new HttpGetRequest("https://www.codechef.com/contests"));
         urls.add(new HttpGetRequest("https://ac.nowcoder.com/acm/contest/vip-index"));
-        urls.add(new HttpGetRequest("http://codeforces.com/contests"));
         urls.add(new HttpGetRequest("https://nanti.jisuanke.com/contest"));
         urls.add(new HttpGetRequest("https://atcoder.jp/contests/"));
         urls.add(new HttpGetRequest("http://acm.hdu.edu.cn/recentcontest/"));
-       // urls.add(new HttpGetRequest("https://www.luogu.org/contest/list"));
         HttpGetRequest bestCoder = new HttpGetRequest("http://bestcoder.hdu.edu.cn/contests/contest_list.php");
         bestCoder.setCharset("gb2312");
-        bestCoder.addHeader("user-agent","Mozilla/5.0");
+        bestCoder.addHeader("user-agent", "Mozilla/5.0");
         urls.add(bestCoder);
-        HttpGetRequest luogu= new HttpGetRequest("https://www.luogu.org/contest/list");
-        luogu.addHeader("user-agent","Mozilla/5.0");  //加ua
-//        urls.add(luogu);
+        HttpGetRequest luogu = new HttpGetRequest("https://www.luogu.org/contest/list");
+        luogu.addHeader("user-agent", "Mozilla/5.0");  //加ua
+
         GeccoEngine.create()
                 .classpath("team.huoguo.crawler.service")
                 .start(urls)
-  //              .debug(true)
+//                .debug(true)
                 .mobile(false)
                 .run();
     }
@@ -66,10 +64,11 @@ public class CrawlConfig {
     /**
      * 将items保存到MongoDB
      */
-    public static void saveToMongoDB(){
+    public static void saveToMongoDB() {
         try {
+            contestDao.deleteAll();
             contestDao.insertAll(items);
-        }catch (Exception e){
+        } catch (Exception e) {
             System.out.println("存在重复数据,默认只插入重复数据中的一条");
         }
     }

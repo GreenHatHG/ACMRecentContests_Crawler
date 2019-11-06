@@ -10,7 +10,7 @@ import lombok.Data;
  **/
 
 @Data
-public  class CodeChef{
+public class CodeChef {
 
     private String name;
     private String startTime;

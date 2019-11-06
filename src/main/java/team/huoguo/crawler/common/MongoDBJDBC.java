@@ -6,8 +6,10 @@ import com.mongodb.client.MongoClients;
 import com.mongodb.client.MongoDatabase;
 import org.bson.codecs.configuration.CodecRegistry;
 import org.bson.codecs.pojo.PojoCodecProvider;
+
 import static org.bson.codecs.configuration.CodecRegistries.fromProviders;
 import static org.bson.codecs.configuration.CodecRegistries.fromRegistries;
+
 /**
  * @description: 连接MongoDB
  * @author: GreenHatHG
@@ -22,9 +24,10 @@ public class MongoDBJDBC {
 
     /**
      * 访问名称为database的数据库
+     *
      * @param database
      */
-    public static void connect(String database){
+    public static void connect(String database) {
 
         //连接数据库
         mongoClient = MongoClients.create("mongodb://acm:443niubi@127.0.0.1:27017/?authSource=admin&ssl=false");
@@ -37,7 +40,7 @@ public class MongoDBJDBC {
         mongoDatabase = mongoClient.getDatabase(database).withCodecRegistry(pojoCodecRegistry);
     }
 
-    public static  void close(){
+    public static void close() {
         mongoClient.close();
         mongoClient = null;
         mongoDatabase = null;

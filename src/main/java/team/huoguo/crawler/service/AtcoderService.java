@@ -25,7 +25,7 @@ public class AtcoderService extends JsonPipeline {
 
     private void addItem() throws Exception {
         Contest contest = null;
-        for(Atcoder atcoder : atcoders){
+        for (Atcoder atcoder : atcoders) {
             contest = new Contest();
 
             contest.setOj("Atcoder");
@@ -41,9 +41,9 @@ public class AtcoderService extends JsonPipeline {
 
             //用时长来得到结束时间
             String length = atcoder.getLength();
-            int h = Integer.parseInt(length.substring(0,2));
-            int m = Integer.parseInt(length.substring(3,5));
-            int minute = h*60+m;
+            int h = Integer.parseInt(length.substring(0, 2));
+            int m = Integer.parseInt(length.substring(3, 5));
+            int minute = h * 60 + m;
             String endTime = DateUtils.offset(startTime, minute);
             contest.setEndTime(endTime);
 
@@ -52,6 +52,7 @@ public class AtcoderService extends JsonPipeline {
             CrawlConfig.items.add(contest);
         }
     }
+
     @Override
     public void process(JSONObject jsonObject) {
         atcoders = new ArrayList<Atcoder>();

@@ -23,9 +23,9 @@ public class NowCoderService extends JsonPipeline {
 
     private List<NowCoder> nowCoders = null;
 
-    private void addItem() throws Exception{
+    private void addItem() throws Exception {
         Contest contest = null;
-        for(NowCoder nowCoder : nowCoders){
+        for (NowCoder nowCoder : nowCoders) {
             contest = new Contest();
             contest.setLink(nowCoder.getLink());
             contest.setOj("NowCoder");
@@ -37,9 +37,9 @@ public class NowCoderService extends JsonPipeline {
              * 需要进行提取并且规范
              */
             String s = nowCoder.getStartTime();
-            String startTime = s.substring(5,21);
-            String endTime = s.substring(24,40);
-            contest.setLength(DateUtils.getLength(startTime,endTime));
+            String startTime = s.substring(5, 21);
+            String endTime = s.substring(24, 40);
+            contest.setLength(DateUtils.getLength(startTime, endTime));
             contest.setStartTime(startTime);
             contest.setEndTime(endTime);
             contest.setWeek(DateUtils.getWeek(startTime));

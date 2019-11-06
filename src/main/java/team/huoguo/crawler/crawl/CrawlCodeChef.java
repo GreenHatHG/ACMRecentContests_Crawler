@@ -3,7 +3,7 @@ package team.huoguo.crawler.crawl;
 import com.geccocrawler.gecco.dynamic.DynamicGecco;
 
 /**
- * @description  爬取Codechef
+ * @description 爬取Codechef
  * @author: GreenHatHG
  * @create: 2019-08-02 10:46
  **/

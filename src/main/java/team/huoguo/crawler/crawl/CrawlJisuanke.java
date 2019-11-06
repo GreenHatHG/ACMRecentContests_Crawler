@@ -8,7 +8,7 @@ import com.geccocrawler.gecco.dynamic.DynamicGecco;
  * @create: 2019-08-02 10:52
  **/
 
-public class CrawlJisuanke extends Crawl{
+public class CrawlJisuanke extends Crawl {
 
     @Override
     public void crawl() {

@@ -1,5 +1,6 @@
 package team.huoguo.crawler.dao.impl;
 
+import com.mongodb.BasicDBObject;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.model.InsertManyOptions;
 import team.huoguo.crawler.common.MongoDBJDBC;
@@ -18,22 +19,30 @@ public class ContestDaoImpl implements ContestDao {
 
     private MongoCollection<Contest> mongoCollection = null;
 
-    public void setMongoCollection(){
+    public void setMongoCollection() {
         mongoCollection = MongoDBJDBC.mongoDatabase.getCollection("contests", Contest.class);
     }
 
     /**
      * 该方法在服务器不能去重插入
+     *
      * @param list
      */
+    @Override
     public void insertAll(List<Contest> list) {
         setMongoCollection();
-        if(!list.isEmpty()){
+        if (!list.isEmpty()) {
             mongoCollection.insertMany(list, new InsertManyOptions().ordered(false));
         }
     }
 
+    @Override
     public void insertOne(Contest contest) {
         mongoCollection.insertOne(contest);
+    }
+
+    @Override
+    public void deleteAll() {
+        mongoCollection.deleteMany(new BasicDBObject());
     }
 }

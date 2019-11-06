@@ -26,9 +26,9 @@ public class JisuankeService extends JsonPipeline {
     private List<Jisuanke> list = null;
 
     /**
-     * @param regex 正则表达式
-     * @param source  需要匹配的字符串
-     * @return  匹配到的结果
+     * @param regex  正则表达式
+     * @param source 需要匹配的字符串
+     * @return 匹配到的结果
      */
     private String getMatcher(String regex, String source) {
         String result = "";
@@ -38,16 +38,16 @@ public class JisuankeService extends JsonPipeline {
             while (matcher.find()) {
                 result = matcher.group(1);//只取第一组
             }
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
         return result;
     }
 
-    private void addItem() throws Exception{
+    private void addItem() throws Exception {
         Contest contest = null;
         for (Jisuanke item : list) {
-            if(item.getStatus().equals("已结束")){
+            if (item.getStatus().equals("已结束")) {
                 continue;
             }
             contest = new Contest();
@@ -66,12 +66,13 @@ public class JisuankeService extends JsonPipeline {
             int h = Integer.parseInt(hour);
             int M = Integer.parseInt(Min);
             contest.setLength(String.format("%02d:%02d", h, M));
-            String endTime = DateUtils.offset(item.getStartTime(), h*60+M);
+            String endTime = DateUtils.offset(item.getStartTime(), h * 60 + M);
             contest.setEndTime(endTime);
             contest.setWeek(DateUtils.getWeek(item.getStartTime()));
             CrawlConfig.items.add(contest);
         }
     }
+
     @Override
     public void process(JSONObject jsonObject) {
         list = new ArrayList<Jisuanke>();

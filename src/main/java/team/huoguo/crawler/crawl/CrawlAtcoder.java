@@ -3,12 +3,12 @@ package team.huoguo.crawler.crawl;
 import com.geccocrawler.gecco.dynamic.DynamicGecco;
 
 /**
- * @description  爬取Atcoder
+ * @description 爬取Atcoder
  * @author: GreenHatHG
  * @create: 2019-08-02 15:29
  **/
 
-public class CrawlAtcoder extends Crawl{
+public class CrawlAtcoder extends Crawl {
 
     @Override
     public void crawl() {

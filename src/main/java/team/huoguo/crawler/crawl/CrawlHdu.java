@@ -6,7 +6,7 @@ import com.geccocrawler.gecco.dynamic.DynamicGecco;
  * @author Pistachio
  * @date 2019/8/11 下午5:45
  */
-public class CrawlHdu extends Crawl{
+public class CrawlHdu extends Crawl {
     @Override
     public void crawl() {
         role = "body > table > tbody > tr:nth-child(4) > td:nth-child(1) > table > tbody > tr:nth-child(n)";

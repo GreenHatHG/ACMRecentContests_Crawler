@@ -22,7 +22,7 @@ import java.util.List;
 public class CodeChefService extends JsonPipeline {
     private List<CodeChef> codeChefs = null;
 
-    private void addItem() throws Exception{
+    private void addItem() throws Exception {
         String startTime = null;
         String endTime = null;
         //爬虫得到的时间格式
@@ -47,7 +47,7 @@ public class CodeChefService extends JsonPipeline {
     }
 
     @Override
-    public void process(JSONObject jsonObject){
+    public void process(JSONObject jsonObject) {
         codeChefs = new ArrayList<CodeChef>();
         try {
             JSONArray jsonArray = jsonObject.getJSONArray("list");

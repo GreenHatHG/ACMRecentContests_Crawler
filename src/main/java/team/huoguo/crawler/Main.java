@@ -1,5 +1,7 @@
 package team.huoguo.crawler;
 
+import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
 import team.huoguo.crawler.common.CrawlConfig;
 import team.huoguo.crawler.common.MongoDBJDBC;
 import team.huoguo.crawler.entity.Contest;
@@ -14,15 +16,15 @@ import java.io.IOException;
 
 public class Main {
 
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) throws Exception {
 
         CrawlConfig.crawl();
-        for(Contest item : CrawlConfig.items){
-            System.out.println(item);
-        }
-//        MongoDBJDBC.connect("acm");
-//        CrawlConfig.saveToMongoDB();
-//        MongoDBJDBC.close();
+        System.out.println("开始连接数据库");
+        MongoDBJDBC.connect("acm");
+        CrawlConfig.saveToMongoDB();
+        MongoDBJDBC.close();
+        System.out.println("连接完成");
+
     }
 
 }

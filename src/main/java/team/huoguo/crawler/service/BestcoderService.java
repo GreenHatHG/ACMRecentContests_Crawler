@@ -21,7 +21,7 @@ import java.util.List;
  */
 @PipelineName("BestcoderService")
 public class BestcoderService extends JsonPipeline {
-    private List<Bestcoder> list= null;
+    private List<Bestcoder> list = null;
 
     private String getEndTime(String url) throws IOException {
         String selector = "#contest-time > tbody > tr:nth-child(1) > td:nth-child(3)";
@@ -34,7 +34,7 @@ public class BestcoderService extends JsonPipeline {
     private void addItem() throws Exception {
         Contest contest = null;
         for (Bestcoder item : list) {
-            if("Ended".equals(item.getStatus())){
+            if ("Ended".equals(item.getStatus())) {
                 continue;
             }
             contest = new Contest();
@@ -51,7 +51,7 @@ public class BestcoderService extends JsonPipeline {
             contest.setLink(item.getLink());
             contest.setLength(length);
             contest.setWeek(week);
-           // System.out.println(contest);
+            // System.out.println(contest);
             CrawlConfig.items.add(contest);
         }
 
@@ -59,7 +59,7 @@ public class BestcoderService extends JsonPipeline {
 
     @Override
     public void process(JSONObject jsonObject) {
- //       System.out.println(jsonObject);
+        //       System.out.println(jsonObject);
         list = new ArrayList<Bestcoder>();
         try {
             JSONArray jsonArray = jsonObject.getJSONArray("list");

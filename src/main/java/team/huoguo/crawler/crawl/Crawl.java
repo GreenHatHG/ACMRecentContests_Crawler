@@ -14,6 +14,6 @@ public abstract class Crawl {
     public static String role = null;
 
     //爬取代码
-    public abstract void crawl() throws IOException;
+    public abstract void crawl() throws Exception;
 
 }

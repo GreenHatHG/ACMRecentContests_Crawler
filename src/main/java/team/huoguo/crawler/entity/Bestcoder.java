@@ -1,5 +1,7 @@
 package team.huoguo.crawler.entity;
+
 import lombok.Data;
+
 /**
  * @author Pistachio
  * @date 2019/8/21 下午10:36
